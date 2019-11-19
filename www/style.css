@@ -1,0 +1,33 @@
+body {
+	background-color: #300;
+	color: white;
+	font-family: sans;
+	font-weight: bold;
+	font-size: x-large;
+}
+
+button {
+	border: 1px solid white;
+	border-radius: 1em;
+	background-color: #555;
+	color: white;
+
+	font-family: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+
+	padding: .5em;
+	min-width: 9em;
+	min-height: 4em;
+}
+
+#persons {
+	display: flex;
+	flex-wrap: wrap;
+	flex-grow: 1;
+	justify-content: space-evenly;
+}
+
+#persons button {
+	margin: 1em;
+}
