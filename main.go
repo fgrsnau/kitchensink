@@ -112,8 +112,8 @@ func (app *application) getTotal() (total int, this_week int, today int) {
 		}
 	}
 	f(&total, "SELECT COUNT(*) FROM counter")
-	f(&this_week, "SELECT COUNT(*) FROM counter WHERE timestamp > DATETIME('now', 'start of day')")
-	f(&today, "SELECT COUNT(*) FROM counter WHERE timestamp > DATETIME('now', 'weekday 0', '-7 days')")
+	f(&this_week, "SELECT COUNT(*) FROM counter WHERE timestamp > DATETIME('now', 'weekday 0', '-7 days')")
+	f(&today, "SELECT COUNT(*) FROM counter WHERE timestamp > DATETIME('now', 'start of day')")
 	return
 }
 
