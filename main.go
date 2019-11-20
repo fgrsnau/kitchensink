@@ -146,7 +146,7 @@ func (app *application) handleUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("request for user list...\n")
+	log.Printf("request from %v for user list...\n", r.RemoteAddr)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(app.getUsers())
@@ -158,7 +158,7 @@ func (app *application) handleTotal(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("request for total counters...\n")
+	log.Printf("request from %v for total counters...\n", r.RemoteAddr)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
@@ -196,7 +196,7 @@ func (app *application) handleIncrement(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
-	log.Printf("incrementing counter for user %v...\n", user)
+	log.Printf("increment request from %v for user %v...\n", r.RemoteAddr, user)
 	_, err = app.db.Exec("INSERT INTO counter (user_id) VALUES (?)", user)
 	if err != nil {
 		log.Fatalf("Unable to update counter: %v", err)
@@ -209,7 +209,7 @@ func (app *application) handleLast(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("request for last...\n")
+	log.Printf("request from %v for last...\n", r.RemoteAddr)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 

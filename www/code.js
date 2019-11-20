@@ -34,19 +34,26 @@ async function update_ui_last() {
 	if (response.elapsed > 24*60) {
 		last.text('more than a day before');
 	} else {
-		const minutes = response.elapsed | 0;
-		if (minutes == 1) {
-			last.text(`${minutes} minute ago`);
-		} else {
-			last.text(`${minutes} minutes ago`);
+		var value = response.elapsed | 0;
+		var unit = 'minute';
+
+		if (value > 60) {
+			value = (value / 60).toFixed(1);
+			unit = 'hour';
 		}
+
+		if (value != 1) {
+			unit = unit + 's';
+		}
+
+		last.text(`${value} ${unit} ago`);
 	}
 
 	last.css('color', '');
 	if (response.elapsed < 45) {
 		last.css('color', 'green');
 	}
-	if (response.elapsed > 2 * 60) {
+	if (response.elapsed > 6 * 60) {
 		last.css('color', 'red');
 	}
 }
