@@ -42,11 +42,6 @@ func (app *application) CreateSchema() {
 		}
 	}
 
-	/*
-	f("DROP TABLE IF EXISTS user")
-	f("DROP TABLE IF EXISTS counter")
-	*/
-
 	f("CREATE TABLE IF NOT EXISTS user (" +
 		"id INTEGER PRIMARY KEY, " +
 		"name TEXT NOT NULL)")
@@ -55,12 +50,6 @@ func (app *application) CreateSchema() {
 		"id INTEGER PRIMARY KEY, " +
 		"user_id INTEGER REFERENCES user (id), " +
 		"timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)")
-
-	/*
-	for i := 0; i < 20; i++ {
-		f("INSERT INTO user (name) VALUES ('Person ' || ?)", string('A' + i))
-	}
-	*/
 }
 
 func (app *application) ListenAndServe(bind string) {
